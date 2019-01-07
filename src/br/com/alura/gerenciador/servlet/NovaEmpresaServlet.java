@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/novaEmpresa")
 public class NovaEmpresaServlet extends HttpServlet {
-	
+	// utilizando o método doPost: a requisição só é permitida através do method Post
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
 		System.out.println("Cadastrando nova empresa!!!");
 		
