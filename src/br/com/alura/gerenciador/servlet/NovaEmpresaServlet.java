@@ -3,6 +3,8 @@ package br.com.alura.gerenciador.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +17,7 @@ import br.com.alura.gerenciador.modelo.Empresa;
 public class NovaEmpresaServlet extends HttpServlet {
 	// utilizando o método doPost: a requisição só é permitida através do method Post
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		
 		System.out.println("Cadastrando nova empresa!!!");
 		
@@ -30,12 +32,9 @@ public class NovaEmpresaServlet extends HttpServlet {
 		System.out.println("Listando empresas cadastradas!!!");
 		System.out.println(banco.getEmpresas());
 		
-		PrintWriter out = resp.getWriter();
-		out.println("<html>");
-		out.println("<body>");
-		out.println("Empresa " + nome + " cadastrada com sucesso!!!");
-		out.println("<body>");
-		out.println("</html>");
+		RequestDispatcher rd = req.getRequestDispatcher("/novaEmpresaCriada.jsp");
+		req.setAttribute("empresa", empresa.getNome());
+		rd.forward(req, resp);
 		
 	}
 }
