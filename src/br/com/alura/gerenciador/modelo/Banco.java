@@ -8,7 +8,8 @@ public class Banco {
 	
 	private static List<Empresa> empresas = new ArrayList<>();
 	
-	public Banco() {
+	// Bloco statico, executado quando a máquina virtual carrega a classe
+	static {
 		Banco.empresas.add(new Empresa("Casa Blanca"));
 		Banco.empresas.add(new Empresa("Suvinil"));
 		Banco.empresas.add(new Empresa("Ambev"));
