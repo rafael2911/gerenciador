@@ -17,7 +17,7 @@ import br.com.alura.gerenciador.modelo.Empresa;
 public class ListaEmpresasServlet extends HttpServlet {
 	
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp)
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
 		Banco banco = new Banco();
