@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.alura.gerenciador.modelo.Banco;
+import br.com.alura.gerenciador.modelo.Empresa;
+
 @WebServlet("/novaEmpresa")
 public class NovaEmpresaServlet extends HttpServlet {
 	// utilizando o método doPost: a requisição só é permitida através do method Post
@@ -18,6 +21,14 @@ public class NovaEmpresaServlet extends HttpServlet {
 		
 		//recebendo parâmetros
 		String nome = req.getParameter("nome");
+		
+		Empresa empresa = new Empresa(nome);
+		
+		Banco banco = new Banco();
+		banco.adiciona(empresa);
+		
+		System.out.println("Listando empresas cadastradas!!!");
+		System.out.println(banco.getEmpresas());
 		
 		PrintWriter out = resp.getWriter();
 		out.println("<html>");
