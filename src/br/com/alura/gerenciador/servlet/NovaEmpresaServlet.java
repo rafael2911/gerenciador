@@ -1,7 +1,9 @@
 package br.com.alura.gerenciador.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,8 +25,19 @@ public class NovaEmpresaServlet extends HttpServlet {
 		
 		//recebendo parâmetros
 		String nome = req.getParameter("nome");
+		String dataEmpresa = req.getParameter("data");
+		
+		Date dataEmpresaFmt = null;
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			dataEmpresaFmt = sdf.parse(dataEmpresa);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		Empresa empresa = new Empresa(nome);
+		empresa.setDataAbertura(dataEmpresaFmt);
 		
 		Banco banco = new Banco();
 		banco.adiciona(empresa);

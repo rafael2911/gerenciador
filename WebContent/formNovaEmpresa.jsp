@@ -8,7 +8,8 @@
 <body>
 	<c:url value="/novaEmpresa" var="formNovaEmpresa" />
 	<form action="${ formNovaEmpresa }" method="post">
-		Nome: <input type="text" name="nome"><br><br>
+		Nome: <input type="text" name="nome">&nbsp;&nbsp;&nbsp;
+		Data: <input type="text" name="data">&nbsp;&nbsp;&nbsp;
 		<input type="submit" value="Salvar">
 	</form>
 </body>
