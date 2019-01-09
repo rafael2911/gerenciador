@@ -29,8 +29,8 @@ public class NovaEmpresaServlet extends HttpServlet {
 		Banco banco = new Banco();
 		banco.adiciona(empresa);
 		
-		System.out.println("Listando empresas cadastradas!!!");
-		System.out.println(banco.getEmpresas());
+//		System.out.println("Listando empresas cadastradas!!!");
+//		System.out.println(banco.getEmpresas());
 		
 		RequestDispatcher rd = req.getRequestDispatcher("/novaEmpresaCriada.jsp");
 		req.setAttribute("empresa", empresa.getNome());

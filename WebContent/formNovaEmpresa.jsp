@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +6,8 @@
 <title>Cadastro de empresa</title>
 </head>
 <body>
-	<form action="/gerenciador/novaEmpresa" method="post">
+	<c:url value="/novaEmpresa" var="formNovaEmpresa" />
+	<form action="${ formNovaEmpresa }" method="post">
 		Nome: <input type="text" name="nome"><br><br>
 		<input type="submit" value="Salvar">
 	</form>
