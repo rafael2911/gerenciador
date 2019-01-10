@@ -14,11 +14,22 @@
 		Empresa ${ empresa } cadastrada com sucesso!
 	</c:if>
 	<br><br>
+	
+	<c:url value="/formNovaEmpresa.jsp" var="nova"></c:url>
+	<a href="${nova }">Nova empresa</a>
+	
+	<br><br>
 	<b>Lista de Empresas:</b><br>
 	
 	<ul>
 	<c:forEach items="${ empresas }" var="empresa">
-		<li>${ empresa.nome } - <fmt:formatDate value="${ empresa.dataAbertura }" pattern="dd/MM/yyyy" /></li>
+		<li>
+			${empresa.id } : ${ empresa.nome } - <fmt:formatDate value="${ empresa.dataAbertura }" pattern="dd/MM/yyyy" />
+			<c:url value="/detalheEmpresa?id=${ empresa.id }" var="edit" />
+			<c:url value="/removeEmpresa?id=${ empresa.id }" var="remov" />
+			<a href="${ edit }">Editar</a>
+			<a href="${ remov }">Remover</a>	
+		</li>
 	</c:forEach>
 	</ul>
 	

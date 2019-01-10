@@ -2,26 +2,84 @@ package br.com.alura.gerenciador.modelo;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class Banco {
 	
 	private static List<Empresa> empresas = new ArrayList<>();
+	private static Integer index = 1;
 	
 	// Bloco statico, executado quando a máquina virtual carrega a classe
 	static {
-		Banco.empresas.add(new Empresa("Casa Blanca"));
-		Banco.empresas.add(new Empresa("Suvinil"));
-		Banco.empresas.add(new Empresa("Ambev"));
-		Banco.empresas.add(new Empresa("Bradesco"));
+		
+		Empresa e1 = new Empresa("Casa Blanca");
+		e1.setId(Banco.index++);
+		Banco.empresas.add(e1);
+		
+		Empresa e2 = new Empresa("Suvinil");
+		e2.setId(Banco.index++);
+		Banco.empresas.add(e2);
+		
+		Empresa e3 = new Empresa("Ambev");
+		e3.setId(Banco.index++);
+		Banco.empresas.add(e3);
+		
+		Empresa e4 = new Empresa("Bradesco");
+		e4.setId(Banco.index++);
+		Banco.empresas.add(e4);
+
 	}
 
 	public void adiciona(Empresa empresa) {
+		empresa.setId(Banco.index++);
 		Banco.empresas.add(empresa);
 	}
 	
 	public List<Empresa> getEmpresas(){
 		return Collections.unmodifiableList(Banco.empresas);
+	}
+	
+	public Empresa getEmpresa(int id) {
+		for (Empresa empresa : empresas) {
+			if(empresa.getId() == id)
+				return empresa;
+		}
+		
+		return null;
+	}
+	
+	public void removeEmpresa(Integer id) {
+//		Empresa e1 = new Empresa("teste");
+//		for (Empresa empresa : empresas) {
+//			if(empresa.getId() == id) {
+//				e1 = empresa;
+//			}
+//		}
+//		
+//		Banco.empresas.remove(e1);
+		
+		// Feito na aula
+		Iterator<Empresa> listaIterator = empresas.iterator();
+
+		while(listaIterator.hasNext()) {
+			
+			if(listaIterator.next().getId() == id)
+				listaIterator.remove();
+			
+		}
+		
+	}
+
+	public void atualiza(Empresa emp) {
+		for (Empresa empresa : empresas) {
+			if(emp.getId() == empresa.getId()) {
+				empresa.setNome(emp.getNome());
+				empresa.setDataAbertura(emp.getDataAbertura());
+			}
+				
+		}
+		
 	}
 	
 }

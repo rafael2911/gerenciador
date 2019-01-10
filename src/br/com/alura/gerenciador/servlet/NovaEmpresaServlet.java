@@ -24,6 +24,7 @@ public class NovaEmpresaServlet extends HttpServlet {
 		System.out.println("Cadastrando nova empresa!!!");
 		
 		//recebendo parâmetros
+		String paramId = req.getParameter("id");  
 		String nome = req.getParameter("nome");
 		String dataEmpresa = req.getParameter("data");
 		
@@ -32,15 +33,25 @@ public class NovaEmpresaServlet extends HttpServlet {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			dataEmpresaFmt = sdf.parse(dataEmpresa);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
 		Empresa empresa = new Empresa(nome);
 		empresa.setDataAbertura(dataEmpresaFmt);
 		
+		
+		
 		Banco banco = new Banco();
-		banco.adiciona(empresa);
+		
+		if(paramId.isEmpty()) {
+			banco.adiciona(empresa);
+		}else {
+			Integer id = Integer.valueOf(paramId);
+			empresa.setId(id);
+			banco.atualiza(empresa);
+		}
+		
 		
 //		System.out.println("Listando empresas cadastradas!!!");
 //		System.out.println(banco.getEmpresas());
