@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.modelo.Banco;
 import br.com.alura.gerenciador.modelo.Empresa;
 
-@WebServlet(urlPatterns="/listaEmpresas")
+//@WebServlet(urlPatterns="/listaEmpresas")
 public class ListaEmpresasServlet extends HttpServlet {
 	
 	@Override
