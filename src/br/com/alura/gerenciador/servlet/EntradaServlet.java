@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.alura.gerenciador.acao.DetalheEmpresa;
 import br.com.alura.gerenciador.acao.ListaEmpresas;
+import br.com.alura.gerenciador.acao.RemoveEmpresa;
 import br.com.alura.gerenciador.acao.SalvaEmpresa;
 
 @WebServlet("/entrada")
@@ -32,7 +33,8 @@ public class EntradaServlet extends HttpServlet {
 			SalvaEmpresa se = new SalvaEmpresa();
 			se.executa(request, response);
 		}else if(acao.equals("removeEmpresa")) {
-			System.out.println("Removendo empresa!");
+			RemoveEmpresa re = new RemoveEmpresa();
+			re.executa(request, response);
 		}
 		
 	}
