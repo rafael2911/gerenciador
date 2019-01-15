@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.modelo.Banco;
 import br.com.alura.gerenciador.modelo.Empresa;
 
-@WebServlet("/detalheEmpresa")
+//@WebServlet("/detalheEmpresa")
 public class DetalheEmpresaServlet extends HttpServlet {
 	
 	@Override

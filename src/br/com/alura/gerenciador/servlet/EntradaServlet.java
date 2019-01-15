@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.alura.gerenciador.acao.DetalheEmpresa;
 import br.com.alura.gerenciador.acao.ListaEmpresas;
 
 @WebServlet("/entrada")
@@ -21,7 +22,8 @@ public class EntradaServlet extends HttpServlet {
 		String acao = request.getParameter("acao");
 		
 		if(acao.equals("detalheEmpresa")) {
-			System.out.println("Detalhando a empresa!");
+			DetalheEmpresa de = new DetalheEmpresa();
+			de.executa(request, response);
 		}else if(acao.equals("listaEmpresas")) {
 			ListaEmpresas le = new ListaEmpresas();
 			le.executa(request, response);
