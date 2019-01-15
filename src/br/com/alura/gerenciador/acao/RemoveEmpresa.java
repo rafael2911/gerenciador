@@ -15,6 +15,10 @@ public class RemoveEmpresa {
 		
 		String paramId = request.getParameter("id");
 		
+		if(paramId == null) {
+			paramId = "";
+		}
+		
 		if(!paramId.isEmpty()) {
 //			int id = Integer.parseInt(paramId);
 			Integer id = Integer.valueOf(paramId); // conforme a aula
