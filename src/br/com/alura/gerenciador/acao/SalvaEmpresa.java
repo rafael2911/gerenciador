@@ -13,7 +13,7 @@ import br.com.alura.gerenciador.modelo.Empresa;
 
 public class SalvaEmpresa {
 	
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		System.out.println("Cadastrando/Editando empresa!");
 		
@@ -47,7 +47,7 @@ public class SalvaEmpresa {
 		}
 		
 		request.setAttribute("empresa", empresa.getNome());
-		response.sendRedirect("entrada?acao=listaEmpresas");
+		return "redirect:entrada?acao=listaEmpresas";
 		
 	}
 	
