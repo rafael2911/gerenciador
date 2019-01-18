@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.alura.gerenciador.acao.DetalheEmpresa;
+import br.com.alura.gerenciador.acao.FormNovaEmpresa;
 import br.com.alura.gerenciador.acao.ListaEmpresas;
 import br.com.alura.gerenciador.acao.RemoveEmpresa;
 import br.com.alura.gerenciador.acao.SalvaEmpresa;
@@ -38,12 +39,15 @@ public class EntradaServlet extends HttpServlet {
 		}else if(acao.equals("removeEmpresa")) {
 			RemoveEmpresa re = new RemoveEmpresa();
 			resposta = re.executa(request, response);
+		}else if(acao.equals("formNovaEmpresa")) {
+			FormNovaEmpresa fne = new FormNovaEmpresa();
+			resposta = fne.executa(request, response);
 		}
 		
 		String[] RespostaEDestino = resposta.split(":");
 		
 		if(RespostaEDestino[0].equals("forward")) {
-			RequestDispatcher rd = request.getRequestDispatcher(RespostaEDestino[1]);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/view/"+RespostaEDestino[1]);
 			rd.forward(request, response);
 		}else {
 			response.sendRedirect(RespostaEDestino[1]);

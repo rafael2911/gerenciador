@@ -15,7 +15,7 @@
 	</c:if>
 	<br><br>
 	
-	<c:url value="/formNovaEmpresa.jsp" var="nova"></c:url>
+	<c:url value="/entrada?acao=formNovaEmpresa" var="nova"></c:url>
 	<a href="${nova }">Nova empresa</a>
 	
 	<br><br>
