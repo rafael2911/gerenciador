@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.modelo.Banco;
 import br.com.alura.gerenciador.modelo.Empresa;
 
-public class SalvaEmpresa {
+public class SalvaEmpresa implements Acao {
 	
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
@@ -47,7 +47,7 @@ public class SalvaEmpresa {
 		}
 		
 		request.setAttribute("empresa", empresa.getNome());
-		return "redirect:entrada?acao=listaEmpresas";
+		return "redirect:entrada?acao=ListaEmpresas";
 		
 	}
 	

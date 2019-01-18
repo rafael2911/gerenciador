@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.alura.gerenciador.acao.Acao;
 import br.com.alura.gerenciador.acao.DetalheEmpresa;
 import br.com.alura.gerenciador.acao.FormNovaEmpresa;
 import br.com.alura.gerenciador.acao.ListaEmpresas;
@@ -23,25 +24,18 @@ public class EntradaServlet extends HttpServlet {
 		
 		System.out.println("Servlet Controladora!!!");
 		
-		String acao = request.getParameter("acao");
+		String acaoParam = request.getParameter("acao");
 		
-		String resposta = null;
+		String nomeDaClasse = "br.com.alura.gerenciador.acao." + acaoParam;
 		
-		if(acao.equals("detalheEmpresa")) {
-			DetalheEmpresa de = new DetalheEmpresa();
-			resposta = de.executa(request, response);
-		}else if(acao.equals("listaEmpresas")) {
-			ListaEmpresas le = new ListaEmpresas();
-			resposta = le.executa(request, response);
-		}else if(acao.equals("salvaEmpresa")) {
-			SalvaEmpresa se = new SalvaEmpresa();
-			resposta = se.executa(request, response);
-		}else if(acao.equals("removeEmpresa")) {
-			RemoveEmpresa re = new RemoveEmpresa();
-			resposta = re.executa(request, response);
-		}else if(acao.equals("formNovaEmpresa")) {
-			FormNovaEmpresa fne = new FormNovaEmpresa();
-			resposta = fne.executa(request, response);
+		String resposta;
+		
+		try {
+			Class classe = Class.forName(nomeDaClasse);
+			Acao acao = (Acao) classe.newInstance();
+			resposta = acao.executa(request, response);
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+			throw new ServletException(e);
 		}
 		
 		String[] RespostaEDestino = resposta.split(":");
@@ -52,6 +46,25 @@ public class EntradaServlet extends HttpServlet {
 		}else {
 			response.sendRedirect(RespostaEDestino[1]);
 		}
+		
+		
+//		if(acao.equals("detalheEmpresa")) {
+//			DetalheEmpresa de = new DetalheEmpresa();
+//			resposta = de.executa(request, response);
+//		}else if(acao.equals("listaEmpresas")) {
+//			ListaEmpresas le = new ListaEmpresas();
+//			resposta = le.executa(request, response);
+//		}else if(acao.equals("salvaEmpresa")) {
+//			SalvaEmpresa se = new SalvaEmpresa();
+//			resposta = se.executa(request, response);
+//		}else if(acao.equals("removeEmpresa")) {
+//			RemoveEmpresa re = new RemoveEmpresa();
+//			resposta = re.executa(request, response);
+//		}else if(acao.equals("formNovaEmpresa")) {
+//			FormNovaEmpresa fne = new FormNovaEmpresa();
+//			resposta = fne.executa(request, response);
+//		}
+		
 		
 	}
 	

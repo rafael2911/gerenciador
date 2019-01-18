@@ -7,7 +7,7 @@
 <title>Cadastro de empresa</title>
 </head>
 <body>
-	<c:url value="/entrada?acao=salvaEmpresa" var="formNovaEmpresa" />
+	<c:url value="/entrada?acao=SalvaEmpresa" var="formNovaEmpresa" />
 	<form action="${ formNovaEmpresa }" method="post">
 		<input type="hidden" value="${ empresa.id }" name="id">
 		Nome: <input type="text" name="nome" value="${ empresa.nome }">&nbsp;&nbsp;&nbsp;
