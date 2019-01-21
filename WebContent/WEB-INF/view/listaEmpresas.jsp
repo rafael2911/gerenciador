@@ -10,6 +10,11 @@
 <title>Lista de Empresas</title>
 </head>
 <body>
+	Login: ${usuarioLogado.login}
+	<br>
+	<br>
+	<br>
+
 	<c:if test="${ not empty empresa }">
 		Empresa ${ empresa } cadastrada com sucesso!
 	</c:if>

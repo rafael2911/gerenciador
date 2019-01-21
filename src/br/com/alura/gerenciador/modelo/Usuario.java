@@ -18,7 +18,6 @@ public class Usuario {
 		this.senha = senha;
 	}
 	public boolean ehIgual(String login, String senha) {
-		System.out.println(login + " - " + senha);
 		if(!this.login.equals(login)) {
 			return false;
 		}
