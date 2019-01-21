@@ -35,8 +35,8 @@ public class Banco {
 		u1.setSenha("123456");
 		
 		Usuario u2 = new Usuario();
-		u1.setLogin("mariana");
-		u1.setSenha("1234");
+		u2.setLogin("mariana");
+		u2.setSenha("1234");
 		
 		Banco.usuarios.add(u1);
 		Banco.usuarios.add(u2);
@@ -91,6 +91,17 @@ public class Banco {
 			}
 				
 		}
+		
+	}
+
+	public Usuario existeUsuario(String login, String senha) {
+		for (Usuario usuario : usuarios) {
+			if(usuario.ehIgual(login, senha)) {
+				return usuario;
+			}
+		}
+		
+		return null;
 		
 	}
 	
