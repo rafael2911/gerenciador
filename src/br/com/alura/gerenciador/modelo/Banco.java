@@ -8,6 +8,7 @@ import java.util.List;
 public class Banco {
 	
 	private static List<Empresa> empresas = new ArrayList<>();
+	private static List<Usuario> usuarios = new ArrayList<>();
 	private static Integer index = 1;
 	
 	// Bloco statico, executado quando a máquina virtual carrega a classe
@@ -28,6 +29,17 @@ public class Banco {
 		Empresa e4 = new Empresa("Bradesco");
 		e4.setId(Banco.index++);
 		Banco.empresas.add(e4);
+		
+		Usuario u1 = new Usuario();
+		u1.setLogin("rafael");
+		u1.setSenha("123456");
+		
+		Usuario u2 = new Usuario();
+		u1.setLogin("mariana");
+		u1.setSenha("1234");
+		
+		Banco.usuarios.add(u1);
+		Banco.usuarios.add(u2);
 
 	}
 
