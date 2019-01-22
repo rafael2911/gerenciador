@@ -15,11 +15,11 @@ public class ListaEmpresas implements Acao {
 	
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession sessao = request.getSession();
-		
-		if(sessao.getAttribute("usuarioLogado") == null) {
-			return "redirect:entrada?acao=FormLogin";
-		}
+//		HttpSession sessao = request.getSession();
+//		
+//		if(sessao.getAttribute("usuarioLogado") == null) {
+//			return "redirect:entrada?acao=FormLogin";
+//		}
 		
 		System.out.println("Listando a empresa!");
 		
