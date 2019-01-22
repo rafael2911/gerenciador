@@ -10,6 +10,7 @@
 <title>Lista de Empresas</title>
 </head>
 <body>
+	<c:import url="logout.jsp"></c:import>
 	Login: ${usuarioLogado.login}
 	<br>
 	<br>
