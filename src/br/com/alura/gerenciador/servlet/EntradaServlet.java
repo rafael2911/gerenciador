@@ -25,16 +25,16 @@ public class EntradaServlet extends HttpServlet {
 		
 		String acaoParam = request.getParameter("acao");
 		
-		HttpSession sessao = request.getSession();
-		
-		boolean usuarioNaoEstaLogado = sessao.getAttribute("usuarioLogado") == null;
-		boolean ehUmaAcaoProtegida = !(acaoParam.equals("FormLogin") || acaoParam.equals("Login"));
-		
-		if(ehUmaAcaoProtegida && usuarioNaoEstaLogado) {
-			System.out.println("Entrou");
-			response.sendRedirect("entrada?acao=FormLogin");
-			return;
-		}
+//		HttpSession sessao = request.getSession();
+//		
+//		boolean usuarioNaoEstaLogado = sessao.getAttribute("usuarioLogado") == null;
+//		boolean ehUmaAcaoProtegida = !(acaoParam.equals("FormLogin") || acaoParam.equals("Login"));
+//		
+//		if(ehUmaAcaoProtegida && usuarioNaoEstaLogado) {
+//			System.out.println("Entrou");
+//			response.sendRedirect("entrada?acao=FormLogin");
+//			return;
+//		}
 		
 		String nomeDaClasse = "br.com.alura.gerenciador.acao." + acaoParam;
 		
