@@ -17,7 +17,7 @@ import br.com.alura.gerenciador.acao.ListaEmpresas;
 import br.com.alura.gerenciador.acao.RemoveEmpresa;
 import br.com.alura.gerenciador.acao.SalvaEmpresa;
 
-@WebServlet("/entrada")
+//@WebServlet("/entrada")
 public class EntradaServlet extends HttpServlet {
 	
 	@Override
