@@ -28,18 +28,30 @@ public class EmpresasServices extends HttpServlet {
 		Banco banco = new Banco();
 		List<Empresa> empresas = new ArrayList<>(banco.getEmpresas());
 		
-		XStream xstream = new XStream();
-		xstream.alias("empresa", Empresa.class);
-		String xml = xstream.toXML(empresas);
+		String valor = request.getHeader("Accept");
+		System.out.println(valor);
 		
-		response.setContentType("application/xml");
-		response.getWriter().print(xml);
+		if(valor.contains("xml")) {
 		
-//		Gson gson = new Gson();
-//		String json = gson.toJson(empresas);
-//		
-//		response.setContentType("application/json");
-//		response.getWriter().print(json);
+			XStream xstream = new XStream();
+			xstream.alias("empresa", Empresa.class);
+			String xml = xstream.toXML(empresas);
+			
+			response.setContentType("application/xml");
+			response.getWriter().print(xml);
+			
+		}else if(valor.contains("json")) {
+		
+			Gson gson = new Gson();
+			String json = gson.toJson(empresas);
+			
+			response.setContentType("application/json");
+			response.getWriter().print(json);
+			
+		}else {
+			response.setContentType("application/json");
+			response.getWriter().print("{'message' : 'no content'}");
+		}
 		
 	}
 
